@@ -5,30 +5,24 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
+import produto1 from "../../assets/produto1.png";
 
 const card = (
   <React.Fragment>
     <CardContent>
-      <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
+      <Typography variant="h5" component="div">
         Vitamin C
       </Typography>
 
-      <Typography variant="body2">
+      <img src={produto1} alt="produto1" />
+
+      <Typography variant="body2" >
         $19.99
       </Typography>
     </CardContent>
 
     <CardActions>
-      <Button variant="contained">Contained</Button>
+      <Button variant="contained">Add to card</Button>
     </CardActions>
   </React.Fragment>
 );
