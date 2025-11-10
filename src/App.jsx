@@ -1,16 +1,23 @@
 
-import OutlinedCard from './components/molecules/OutlinedCard'
-import ResponsiveAppBar from './components/organism/ResponsiveAppBar'
+import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
+import Home from "./components/pages/Home";
+import Product from "./components/pages/Product";
+import Header from "./components/organism/Header";
+import Contato from './components/pages/FaleConosco';
 
-function App() {
-
-
+const App = () => {
   return (
     <>
-      <ResponsiveAppBar />
-      <OutlinedCard />
+      <Header />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/produto/:id" element={<Product />} />
+          <Route path='/contato' element={<Contato />} />
+        </Routes>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
