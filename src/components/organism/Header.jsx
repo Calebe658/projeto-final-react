@@ -9,6 +9,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import logo2 from "../../assets/logo2.png";
+import { useNavigate } from 'react-router-dom';
 
 const pages = ['Home', 'Shop', 'About', 'Contact'];
 
@@ -23,6 +24,7 @@ function Header() {
     setAnchorElNav(null);
   };
 
+  const navigate = useNavigate();
 
   return (
     <AppBar position="fixed" style={{ backgroundColor: "white" }}>
@@ -73,15 +75,12 @@ function Header() {
             gap: { xs: 0.5, sm: 1, md: 2 }
           }}>
 
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'black', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+            <Button
+              onClick={() => navigate('/contato')}
+              sx={{ my: 2, color: 'black', display: 'block' }}
+            >
+              Fale conosco
+            </Button>
           </Box>
         </Toolbar>
       </Container>

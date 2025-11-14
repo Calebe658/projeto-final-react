@@ -8,8 +8,8 @@ import Contato from './components/pages/FaleConosco';
 const App = () => {
   return (
     <>
-      <Header />
       <BrowserRouter>
+      <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/produto/:id" element={<Product />} />
