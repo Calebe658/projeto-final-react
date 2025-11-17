@@ -3,6 +3,7 @@ import axios from 'axios';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import OutlinedCard from '../molecules/OutlinedCard';
 
 const Home = () => {
     const [data, setData] = useState(null);
@@ -19,7 +20,9 @@ const Home = () => {
                 <Grid container spacing={2} >
                     {data?.map((funcionario, index) => (
                         <Grid size={5} >
-                            <div key={index}>{funcionario.nome}</div>
+                            <div key={index} style={{ width: "275px" }}>
+                                <OutlinedCard />
+                            </div>
                         </Grid>
                     ))}
                 </Grid>

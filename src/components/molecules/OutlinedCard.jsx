@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import produto1 from "../../assets/produto1.png";
 
-const card = (
+const card = ({ nome }) => (
   <React.Fragment>
     <CardContent>
       <Typography variant="h5" component="div">
@@ -24,13 +24,19 @@ const card = (
     <CardActions>
       <Button variant="contained">Add to card</Button>
     </CardActions>
+
+    <Typography variant="h5" component="div">
+      {nome}
+    </Typography>
   </React.Fragment>
 );
 
-export default function OutlinedCard() {
+export default function OutlinedCard({ nome }) {
   return (
     <Box sx={{ minWidth: 275 }}>
-      <Card variant="outlined">{card}</Card>
+      <Card variant="outlined">
+        {card({ nome })}
+      </Card>
     </Box>
   );
 }
