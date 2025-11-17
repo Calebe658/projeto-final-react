@@ -19,9 +19,13 @@ const Home = () => {
             <Box sx={{ flexGrow: 1 }} >
                 <Grid container spacing={2} >
                     {data?.map((funcionario, index) => (
-                        <Grid size={5} >
-                            <div key={index} style={{ width: "275px" }}>
-                                <OutlinedCard />
+                        <Grid size={5} key={index}>
+                            <div style={{ width: "275px" }}>
+                                <OutlinedCard
+                                    nome={funcionario.nome}
+                                    dtNascimento={funcionario.dtNascimento}
+                                    cargo={funcionario.cargo}
+                                />
                             </div>
                         </Grid>
                     ))}
