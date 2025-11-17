@@ -11,31 +11,23 @@ const card = ({ nome, dtNascimento, cargo }) => (
   <React.Fragment>
     <CardContent>
       <Typography variant="h5" component="div">
-        Vitamin C
+        {nome}
       </Typography>
 
       <img src={produto1} alt="produto1" />
 
-      <Typography variant="body2" >
-        $19.99
+      <Typography variant="h5" component="div">
+        {dtNascimento}
+      </Typography>
+
+      <Typography variant="h5" component="div">
+        {cargo}
       </Typography>
     </CardContent>
 
     <CardActions>
       <Button variant="contained">Add to card</Button>
     </CardActions>
-
-    <Typography variant="h5" component="div">
-      {nome}
-    </Typography>
-
-    <Typography variant="h5" component="div">
-      {dtNascimento}
-    </Typography>
-
-    <Typography variant="h5" component="div">
-      {cargo}
-    </Typography>
   </React.Fragment>
 );
 
