@@ -14,6 +14,9 @@ import { useNavigate } from 'react-router-dom';
 const pages = ['Home', 'Shop', 'About', 'Contact'];
 
 function Header() {
+
+  const navigate = useNavigate();
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -23,8 +26,6 @@ function Header() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
-  const navigate = useNavigate();
 
   return (
     <AppBar position="fixed" style={{ backgroundColor: "white" }}>
@@ -42,7 +43,7 @@ function Header() {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <img src={logo2} alt="logo" style={{ width: "180px", height: "auto", maxWidth: "40vw" }} />
+              <img src={logo2} alt="logo" style={{ width: "150px", height: "100px", maxWidth: "40vw" }} />
             </IconButton>
 
             <Menu

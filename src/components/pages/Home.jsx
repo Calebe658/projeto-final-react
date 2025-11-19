@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import OutlinedCard from '../molecules/OutlinedCard';
 
@@ -22,8 +21,9 @@ const Home = () => {
                         <Grid size={5} key={index}>
                             <div style={{ width: "275px" }}>
                                 <OutlinedCard
+                                    id={funcionario._id}
                                     nome={funcionario.nome}
-                                    dtNascimento={funcionario.dtNascimento}
+                                    foto={funcionario.foto}
                                     cargo={funcionario.cargo}
                                 />
                             </div>
