@@ -9,12 +9,16 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-      <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/produto/:id" element={<Product />} />
-          <Route path='/contato' element={<Contato />} />
-        </Routes>
+        <Header />
+
+        <div style={{paddingTop: 140}}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/produto/:id" element={<Product />} />
+            <Route path='/contato' element={<Contato />} />
+          </Routes>
+        </div>
+
       </BrowserRouter>
     </>
   );

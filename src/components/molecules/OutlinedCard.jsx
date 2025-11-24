@@ -10,7 +10,7 @@ export default function OutlinedCard({ id, nome, foto, cargo }) {
   const navigate = useNavigate();
 
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{ minWidth: 300, minHeight: 200, marginTop: 5 }}>
       <CardContent>
         <Typography
           sx={{
