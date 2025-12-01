@@ -11,7 +11,8 @@ const App = () => {
       <BrowserRouter>
         <Header />
 
-        <div style={{paddingTop: 140}}>
+        <div style={{ paddingTop: 140, width: "100%", display: "block" }}>
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/produto/:id" element={<Product />} />
