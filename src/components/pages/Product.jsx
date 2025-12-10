@@ -8,11 +8,13 @@ import BasicCard from '../molecules/BasicCard';
 import '../css/Product.css'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import { useCart } from '../../contexts/CartContext'; 
 
 const Product = () => {
     const { id } = useParams();
     const [data, setData] = useState(null);
     const navigate = useNavigate();
+    const { addToCart } = useCart();
 
     const preco = data?.preco.valor;
     const desconto = data?.preco.desconto;
@@ -25,22 +27,27 @@ const Product = () => {
         axios.get(`https://node-vercel-app-rho.vercel.app/api/produtos/${id}`)
             .then((response) => setData(response.data))
             .catch((error) => console.error('Error fetching data:', error));
-    }, []);
+    }, [id]); 
 
-    const [produto, setProduto] = useState([]);
-
-    useEffect(() => {
-        if (data) {
-            setProduto({
-                nome: data?.nome,
-                preco: preco,
-                fornecedor: data?.fornecedor.nome
-            });
-        }
-    }, [data]);
+    const [produtos, setProdutos] = useState([]);
 
     const comprar = () => {
-        navigate("/carrinho", { state: { produto } });
+        if (data) {
+            const produtoParaAdicionar = {
+                id: data._id, 
+                nome: data.nome,
+                preco: data.preco.valor,
+                fornecedor: data.fornecedor.nome,
+                quantidade: 1 
+            };
+            
+            // 1. Adiciona o produto ao estado global do carrinho
+            addToCart(produtoParaAdicionar); 
+
+            // 2. Navega para a página do carrinho
+            // Não é mais necessário passar o state via navigate
+            navigate("/carrinho"); 
+        }
     };
 
     return (
