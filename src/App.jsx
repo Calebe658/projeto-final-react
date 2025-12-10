@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
 import Home from "./components/pages/Home";
 import Product from "./components/pages/Product";
 import Header from "./components/organism/Header";
-import Contato from './components/pages/FaleConosco';
+import Carrinho from './components/pages/Carrinho';
 
 const App = () => {
   return (
@@ -16,7 +16,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/produto/:id" element={<Product />} />
-            <Route path='/contato' element={<Contato />} />
+            <Route path='/carrinho' element={<Carrinho />} />
           </Routes>
         </div>
 

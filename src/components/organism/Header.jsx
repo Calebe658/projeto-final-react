@@ -54,10 +54,10 @@ function Header() {
             gap: { xs: 0.5, sm: 1, md: 2 },
           }}>
             <Button
-              onClick={() => navigate('/contato')}
+              onClick={() => navigate('/carrinho')}
               sx={{ my: 2, color: 'black', display: 'block' }}
             >
-              Contato
+              Carrinho
             </Button>
           </Box>
 

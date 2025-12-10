@@ -11,7 +11,7 @@ const Home = () => {
 
     useEffect(() => {
         axios.get('https://node-vercel-app-rho.vercel.app/api/produtos')
-            .then((response) => { setData(response.data.produtos); console.log(response.data.produtos); })
+            .then((response) => setData(response.data.produtos))
             .catch((error) => console.error('Error fetching data:', error));
     }, []);
 
@@ -32,7 +32,7 @@ const Home = () => {
                                         nome={produtos.nome}
                                         foto={frasco}
                                         preco={`$${produtos.preco.valor}`}
-                                        imgStyle={{ width: "200px", marginLeft: "20%"}}
+                                        imgStyle={{ width: "200px", marginLeft: "20%" }}
                                     />
                                 </div>
                             </Grid>

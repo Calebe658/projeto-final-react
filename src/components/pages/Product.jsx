@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import frasco from '../../assets/frasco.png'
 import { Box, Button, Grid, IconButton, Typography } from "@mui/material";
 import BasicCard from '../molecules/BasicCard';
@@ -12,6 +12,7 @@ import CardContent from '@mui/material/CardContent';
 const Product = () => {
     const { id } = useParams();
     const [data, setData] = useState(null);
+    const navigate = useNavigate();
 
     const preco = data?.preco.valor;
     const desconto = data?.preco.desconto;
@@ -25,6 +26,22 @@ const Product = () => {
             .then((response) => setData(response.data))
             .catch((error) => console.error('Error fetching data:', error));
     }, []);
+
+    const [produto, setProduto] = useState([]);
+
+    useEffect(() => {
+        if (data) {
+            setProduto({
+                nome: data?.nome,
+                preco: preco,
+                fornecedor: data?.fornecedor.nome
+            });
+        }
+    }, [data]);
+
+    const comprar = () => {
+        navigate("/carrinho", { state: { produto } });
+    };
 
     return (
         <Box sx={{ marginLeft: "18%", minWidth: "1400px" }}>
@@ -142,7 +159,7 @@ const Product = () => {
 
                         <div>
                             <div>
-                                <Button variant='contained' id='btn-comprar'>Comprar</Button>
+                                <Button variant='contained' id='btn-comprar' onClick={comprar}>Comprar</Button>
                             </div>
 
                             <div>
