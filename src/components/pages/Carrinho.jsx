@@ -3,14 +3,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Button, Box, Typography, Grid } from "@mui/material";
 import frasco from "../../assets/frasco.png"
 import '../css/Carrinho.css'
-import { useCart } from '../../contexts/CartContext'; 
+import { useCart } from '../../contexts/CartContext';
 
 const Carrinho = () => {
     const location = useLocation();
     const { cartItems } = useCart();
     const navigate = useNavigate();
 
-    // Agora, 'produtos' será um array de produtos
     const [produto, setProdutos] = useState(cartItems || []);
     const [quantidade, setQuantidade] = useState(1);
 
