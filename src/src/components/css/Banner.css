@@ -1,0 +1,23 @@
+.banner-container {
+    display: flex;
+    justify-content: center;
+}
+
+.texto {
+    display: inline-block;
+    width: 100%;
+    max-width: 500px;
+}
+
+.texto p {
+    opacity: 0.6;
+}
+
+.div-imagem {
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.div-imagem img {
+    width: 250px;
+}

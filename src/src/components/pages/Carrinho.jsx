@@ -3,35 +3,20 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Button, Box, Typography, Grid } from "@mui/material";
 import frasco from "../../assets/frasco.png"
 import '../css/Carrinho.css'
-import { useCart } from '../../contexts/CartContext';
+import { useCart } from '../../contexts/CartContext'; 
 
 const Carrinho = () => {
     const location = useLocation();
     const { cartItems } = useCart();
     const navigate = useNavigate();
 
+    // Agora, 'produtos' será um array de produtos
     const [produto, setProdutos] = useState(cartItems || []);
+    const [quantidade, setQuantidade] = useState(1);
 
-    const aumentar = (id) => {
-        setProdutos(produto.map(produtos => produtos.id == id ? { ...produtos, quantidade: produtos.quantidade + 1 } : produtos));
-    };
+    console.log(produto)
 
-    const diminuir = (id) => {
-        setProdutos(produto.map(produtos => produtos.id == id && produtos.quantidade > 0 ? { ...produtos, quantidade: produtos.quantidade - 1 }
-            : produtos));
-    };
-
-    let total = 0;
-    let totalItens = 0;
-
-    produto.map(produtos => {
-        total += produtos.preco * produtos.quantidade;
-        totalItens += produtos.quantidade;
-    });
-
-    let precoTotal = total.toFixed(2);
-
-    if (!produto || totalItens == 0) {
+    if (!produto || quantidade == 0) {
         return (
             <div id="div-carrinho-vazio">
                 <div id="texto-carrinho-vazio">
@@ -49,62 +34,71 @@ const Carrinho = () => {
         );
     }
 
+    const aumentar = () => {
+        setQuantidade(quantidade + 1);
+    };
+
+    const diminuir = () => {
+        setQuantidade(quantidade - 1);
+    };
+
+    const total = (produto.preco * quantidade).toFixed(2);
+
     return (
         <Box sx={{ marginLeft: "18%", minWidth: "1300px", marginBottom: "300px" }}>
-
             <Typography variant="h4" fontWeight="bold" color="blue" marginTop={"20px"}>
                 Meu carrinho
             </Typography>
 
-            {produto.map((produto, index) => (
-                <Grid container spacing={1} id="grid-principal" key={index}>
-                    <Grid size={6} >
-                        <div style={{ display: "flex" }}>
-                            <div>
-                                <img src={frasco} alt="" style={{ width: "100px", marginLeft: "10px" }} />
-                            </div>
-
-                            <div style={{ marginTop: "20px" }}>
-                                <Typography variant="h4">
-                                    {produto.nome}
-                                </Typography>
-
-                                <Typography variant="h6">
-                                    Vendido por <strong>{produto.fornecedor}</strong>
-                                </Typography>
-
-                                <Typography variant="h6">
-                                    Entregue por <strong>Natural Supplements</strong>
-                                </Typography>
-                            </div>
+            <Grid container spacing={1} id="grid-principal">
+                <Grid size={6} >
+                    <div style={{ display: "flex" }}>
+                        <div>
+                            <img src={frasco} alt="" style={{ width: "100px", marginLeft: "10px" }} />
                         </div>
-                    </Grid>
 
-                    <Grid size={6}>
-                        <div id="div-contador">
-                            <div>
-                                <Typography>
-                                    Quantidade:
-                                </Typography>
+                        <div style={{ marginTop: "20px" }}>
+                            <Typography variant="h4">
+                                {produto.nome}
+                            </Typography>
 
-                                <Button onClick={() => diminuir(produto.id)}>-</Button>
-                                <div id="contador">{produto.quantidade}</div>
-                                <Button onClick={() => aumentar(produto.id)}>+</Button>
-                            </div>
+                            <Typography variant="h6">
+                                Vendido por <strong>{produto.fornecedor}</strong>
+                            </Typography>
 
-                            <div className="div-total">
-                                <Typography variant="h5" color="blue">
-                                    R$ {produto.preco}
-                                </Typography>
-
-                                <Typography variant="h5" color="blue">
-                                    No cartão ou à vista no pix
-                                </Typography>
-                            </div>
+                            <Typography variant="h6">
+                                Entregue por <strong>Natural Supplements</strong>
+                            </Typography>
                         </div>
-                    </Grid>
+                    </div>
                 </Grid>
-            ))}
+
+
+                <Grid size={6}>
+                    <div id="div-contador">
+                        <div>
+                            <Typography>
+                                Quantidade:
+                            </Typography>
+
+                            <Button onClick={diminuir}>-</Button>
+                            <div id="contador">{quantidade}</div>
+                            <Button onClick={aumentar}>+</Button>
+                        </div>
+
+                        <div className="div-total">
+                            <Typography variant="h5" color="blue">
+                                R$ {total}
+                            </Typography>
+
+                            <Typography variant="h5" color="blue">
+                                No cartão ou à vista no pix
+                            </Typography>
+                        </div>
+                    </div>
+
+                </Grid>
+            </Grid>
 
             <Grid container spacing={1} id="grid-resumo">
                 <div id="div-resumo">
@@ -117,12 +111,12 @@ const Carrinho = () => {
             <Grid container spacing={1} className="grid-produto-total">
                 <div className="div-produto-total">
                     <Typography fontWeight={"bold"}>
-                        Quantidade de produtos: {totalItens}
+                        {quantidade} produto
                     </Typography>
 
                     <div>
                         <Typography fontWeight={'bold'}>
-                            {precoTotal}
+                            R$ {total}
                         </Typography>
                     </div>
                 </div>
@@ -136,7 +130,7 @@ const Carrinho = () => {
 
                     <div className="div-total">
                         <Typography color="blue">
-                            {precoTotal}
+                            R$ {total}
                         </Typography>
 
                         <Typography color="blue">
