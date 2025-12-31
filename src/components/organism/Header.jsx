@@ -103,6 +103,7 @@ function Header() {
                 src={carrinho}
                 alt="logo"
                 style={{ width: "25px", height: "auto" }}
+                onClick={() => navigate('/carrinho')}
               />
             </IconButton>
           </Box>

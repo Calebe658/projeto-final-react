@@ -225,7 +225,6 @@ const Product = () => {
                                 Data de criação: ${dataFormatada}
                                 Sabor: ${data?.caracteristicas.sabor ? data.caracteristicas.sabor : "Sem sabor"}
                                 `}
-
                             </Typography>
                         </CardContent>
                     </Card>
