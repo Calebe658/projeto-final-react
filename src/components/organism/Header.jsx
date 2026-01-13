@@ -97,13 +97,12 @@ function Header() {
             gap: { xs: 0.5, sm: 1, md: 2 },
           }}>
             <IconButton
-
+              onClick={() => navigate('/carrinho')}
             >
               <img
                 src={carrinho}
                 alt="logo"
                 style={{ width: "25px", height: "auto" }}
-                onClick={() => navigate('/carrinho')}
               />
             </IconButton>
           </Box>
